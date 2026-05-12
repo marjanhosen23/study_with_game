@@ -1,0 +1,88 @@
+name: study_with_game
+description: "A new Flutter project."
+
+# Prevent accidental publish to pub.dev
+publish_to: 'none'
+
+# App version
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+# ---------------- DEPENDENCIES ----------------
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Cupertino icons
+  cupertino_icons: ^1.0.8
+
+  # Supabase
+  supabase_flutter: ^2.9.1
+
+  # Flame Game Engine
+  flame: ^1.17.0
+
+  flame_audio: ^2.10.0
+
+# ---------------- DEV DEPENDENCIES ----------------
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Lint rules
+  flutter_lints: ^5.0.0
+
+  # App icon package
+  flutter_launcher_icons: ^0.14.3
+
+  #url launchar
+
+  url_launcher: ^6.3.1
+
+# ---------------- APP ICON ----------------
+flutter_launcher_icons:
+  android: true
+  ios: true
+
+  # App icon path
+  image_path: "assets/logo/logo1.png"
+
+# ---------------- FLUTTER ----------------
+flutter:
+
+  # Material icons
+  uses-material-design: true
+
+  # ---------------- ASSETS ----------------
+  assets:
+    - assets/login/
+    - assets/homepage/
+    - assets/subjects/
+    - assets/logo/
+    - assets/learning/
+    - assets/programming_page/
+    - assets/images/game/w_i_programming/
+    - assets/audio/
+    - assets/fonts/Inria_Serif/
+    - assets/fonts/inter/
+
+  # ---------------- FONTS ----------------
+  fonts:
+
+    # Inria Serif
+    - family: InriaSerif
+      fonts:
+        - asset: assets/fonts/Inria_Serif/InriaSerif-Regular.ttf
+
+        - asset: assets/fonts/Inria_Serif/InriaSerif-Bold.ttf
+          weight: 700
+
+    # Inter
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/inter/Inter_18pt-Regular.ttf
+
+        - asset: assets/fonts/inter/Inter_24pt-Bold.ttf
+          weight: 700
