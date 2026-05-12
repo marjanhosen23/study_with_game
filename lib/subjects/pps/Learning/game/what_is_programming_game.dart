@@ -116,7 +116,17 @@ class WhatIsProgrammingGame extends FlameGame {
 
       if(ant.position.x > 50){
 
-        ant.position.x -= 40;
+        ant.add(
+
+          MoveEffect.by(
+
+            Vector2(-40, 0),
+
+            EffectController(
+              duration: 0.3,
+            ),
+          ),
+        );
       }
     }
   }
@@ -147,7 +157,7 @@ class _WhatIsProgrammingGamePageState
     super.initState();
 
     Future.delayed(
-      const Duration(milliseconds: 500),
+       Duration(milliseconds: 500),
 
           () {
 
@@ -176,7 +186,7 @@ class _WhatIsProgrammingGamePageState
     });
 
     Future.delayed(
-      const Duration(seconds: 2),
+       Duration(seconds: 2),
 
           () {
 
@@ -213,7 +223,7 @@ class _WhatIsProgrammingGamePageState
               child: Container(
 
                 padding:
-                const EdgeInsets.symmetric(
+                EdgeInsets.symmetric(
                   horizontal: 20,
                   vertical: 12,
                 ),
@@ -251,116 +261,7 @@ class _WhatIsProgrammingGamePageState
                 ),
               ),
             ),
-// LEVEL COMPLETE
-          if(levelCompleted)
 
-            Container(
-
-              color:
-              Colors.black.withOpacity(0.7),
-
-              child: Center(
-
-                child: Container(
-
-                  margin:
-                  const EdgeInsets.all(30),
-
-                  padding:
-                  const EdgeInsets.all(25),
-
-                  decoration: BoxDecoration(
-
-                    color: Colors.white,
-
-                    borderRadius:
-                    BorderRadius.circular(25),
-                  ),
-
-                  child: Column(
-
-                    mainAxisSize:
-                    MainAxisSize.min,
-
-                    children:  [
-
-                      Text(
-
-                        " Level Complete",
-
-                        style: TextStyle(
-
-                          fontSize: 30,
-
-                          fontWeight:
-                          FontWeight.bold,
-                        ),
-                      ),
-
-                      SizedBox(height: 15),
-
-                      const Text(
-
-                        "You gave\ncorrect instructions!",
-
-                        textAlign:
-                        TextAlign.center,
-
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                      /// Back Button
-                      const SizedBox(height: 25),
-
-                      GestureDetector(
-
-                        onTap: () {
-
-                          Navigator.pop(context);
-                        },
-
-                        child: Container(
-
-                          padding:
-                          const EdgeInsets.symmetric(
-
-                            horizontal: 25,
-                            vertical: 12,
-                          ),
-
-                          decoration: BoxDecoration(
-
-                            color: const Color(0xff143d73),
-
-                            borderRadius:
-                            BorderRadius.circular(15),
-                          ),
-
-                          child: const Text(
-
-                            "Back",
-
-                            style: TextStyle(
-
-                              color: Colors.white,
-
-                              fontSize: 20,
-
-                              fontWeight:
-                              FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-
-
-                    ],
-                  ),
-
-                ),
-              ),
-            ),
           // BUTTON PANEL
           Positioned(
 
@@ -394,7 +295,7 @@ class _WhatIsProgrammingGamePageState
                 child: Padding(
 
                   padding:
-                  const EdgeInsets.only(
+                  EdgeInsets.only(
                     bottom: 40,
                   ),
 
@@ -424,13 +325,14 @@ class _WhatIsProgrammingGamePageState
                           }
 
                           // LEFT ROAD
-                          else if(game.direction == "left" &&
-                              game.ant.position.x > 70){
+                          else if(
+                          game.direction == "left" &&
+                              game.ant.position.x > 30){
 
                             game.moveUp();
 
                             // FINISH
-                            if(game.ant.position.x <= 70){
+                            if(game.ant.position.x <= 110){
 
                               showBubble("Nice! You did it");
 
@@ -466,7 +368,7 @@ class _WhatIsProgrammingGamePageState
                         },
                       ),
 
-                      const SizedBox(
+                       SizedBox(
                         height: 0,
                       ),
 
@@ -486,40 +388,15 @@ class _WhatIsProgrammingGamePageState
                                 () {
                                   if(levelCompleted) return;
                               // TURN AREA
-                              if(game.ant.position.y <= 140 &&
-                                  game.ant.position.x > 50){
+                                  if(game.ant.position.y <= 180 &&
+                                      game.ant.position.x > 50){
 
                                 game.moveLeft();
 
-                                // FINISH
-                                if(game.ant.position.x <= 90){
-
-                                  showBubble("Nice ! You did it");
-
-                                  FlameAudio.play(
-                                    'yayy.mp3',
-                                  );
-
-                                }
-
-                                else{
-
-                                  showBubble("Correct");
-                                }
-                              }
-
-                              // WRONG
-                              else{
-
-                                showBubble("Wrong Action");
-                                FlameAudio.play(
-                                  'oops.mp3',
-                                );
-                              }
-                            },
+                            }},
                           ),
 
-                          const SizedBox(
+                          SizedBox(
                             width: 30,
                           ),
 
@@ -539,7 +416,7 @@ class _WhatIsProgrammingGamePageState
                         ],
                       ),
 
-                      const SizedBox(
+                       SizedBox(
                         height: 0,
                       ),
 
@@ -562,6 +439,86 @@ class _WhatIsProgrammingGamePageState
               ),
             ),
           ),
+          // LEVEL COMPLETE
+          if(levelCompleted)
+
+            Container(
+
+              color:
+              Colors.black.withOpacity(0.7),
+
+              child: Center(
+
+                child: Container(
+
+                  margin:
+                  EdgeInsets.all(30),
+
+                  padding:
+                  EdgeInsets.all(25),
+
+                  decoration: BoxDecoration(
+
+                    color: Colors.white,
+
+                    borderRadius:
+                    BorderRadius.circular(25),
+                  ),
+
+                  child: Column(
+
+                    mainAxisSize:
+                    MainAxisSize.min,
+
+                    children:  [
+
+                      Text(
+
+                        " Level Complete",
+
+                        style: TextStyle(
+
+                          fontSize: 30,
+
+                          fontWeight:
+                          FontWeight.bold,
+                        ),
+                      ),
+
+                      SizedBox(height: 15),
+
+                      Text(
+
+                        "You gave\ncorrect instructions!",
+
+                        textAlign:
+                        TextAlign.center,
+
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      /// Back Button
+                      SizedBox(height: 25),
+
+                      ElevatedButton(
+
+                        onPressed: () {
+
+                          Navigator.pop(context);
+                        },
+
+                        child: const Text(
+                          "Back",
+                        ),
+                      ),
+
+                    ],
+                  ),
+
+                ),
+              ),
+            ),
         ],
       ),
     );
